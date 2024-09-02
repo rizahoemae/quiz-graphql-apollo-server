@@ -1,5 +1,6 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { createHandler } from '@vercel/node';
 const books = [
     {
         id: 1,
@@ -61,3 +62,4 @@ const { url } = await startStandaloneServer(server, {
     listen: { port: 4000 },
 });
 console.log(`🚀  Server ready at: ${url}`);
+export default createHandler(server);
